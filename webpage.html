@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Color Picker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      transition: background 0.5s;
+      background: #f0f0f0;
+    }
+    select, p {
+      font-size: 18px;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Select Your Mood</h1>
+  <select onchange="changeMood(this.value)">
+    <option value="">-- Choose Mood --</option>
+    <option value="happy">Happy</option>
+    <option value="sad">Sad</option>
+    <option value="angry">Angry</option>
+    <option value="relaxed">Relaxed</option>
+    <option value="excited">Excited</option>
+  </select>
+  <p id="message">Your mood message will appear here.</p>
+
+  <script>
+    const moods = {
+      happy:   { color: "#fff176", message: "Feeling bright and happy!" },
+      sad:     { color: "#90caf9", message: "It's okay to feel blue." },
+      angry:   { color: "#ef5350", message: "Take a deep breath." },
+      relaxed: { color: "#a5d6a7", message: "Nice and calm, good vibes." },
+      excited: { color: "#ffb74d", message: "You're full of energy!" }
+    };
+
+    function changeMood(mood) {
+      const m = moods[mood];
+      if (m) {
+        document.body.style.background = m.color;
+        document.getElementById("message").textContent = m.message;
+      } else {
+        document.body.style.background = "#f0f0f0";
+        document.getElementById("message").textContent = "Your mood message will appear here.";
+      }
+    }
+  </script>
+</body>
+</html>
